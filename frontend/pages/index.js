@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from "react";
 import { HACKLIST_CONTRACT_ADDRESS, abi } from "../constants";
 import Button from "../components/Button";
 import Confetti from "react-confetti";
-import ScreenSize from "../components/Debug/Screensize";
 
 export default function Home() {
   const { query } = useRouter();
@@ -224,7 +223,7 @@ export default function Home() {
               <h3 className="sm:py-1 text-3xl text-slate-300">Welcome to <strong>Encode x Polygon Hackaton</strong> on HackList!</h3>
               <p>You can use this platform to save your spot at the hackathon. Connect your wallet and don't miss the chance!</p>
               <p className="pt-2">For more details about the hackathon, please visit: <a className="underline decoration-green-400 decoration-2 underline-offset-4" 
-              target="_blank" href="https://www.encode.club/polygon-hackathon">the official website</a>.</p>
+              target="_blank" rel="noopener noreferrer" href="https://www.encode.club/polygon-hackathon">the official website</a>.</p>
             </div>
           </div>
           {
