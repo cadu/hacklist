@@ -1,6 +1,10 @@
 {
   "presets": [
-    
+    ["@babel/preset-react", {
+      "runtime": "automatic"
+    }]
   ],
-  "plugins": []
+  "plugins": [
+    "@babel/plugin-syntax-jsx"
+  ]
 }

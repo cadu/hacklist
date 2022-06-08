@@ -1,4 +1,7 @@
 import Head from "next/head";
+import Image from 'next/image';
+import HackathonLogo from "../public/hackathon-logo.svg";
+import CoverHome from "../public/cover-home.svg";
 import Web3Modal from "web3modal";
 import {useRouter} from "next/router";
 import { providers, Contract } from "ethers";
@@ -217,11 +220,11 @@ export default function Home() {
           <h1 className="text-5xl font-bold"><span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-green-600">HackList</span></h1>
           <div className="sm:flex pt-8 shadow-slate-500 items-center align-top">
             <div className="w-64 lg:w-3/4 sm:w-60 p-4 border-2 rounded">
-              <img src="hackathon-logo.svg" className=""/>
+              <Image src={HackathonLogo} alt="Encode x Polygon logo"/>
             </div>
             <div className="py-4 sm:py-0 sm:px-4">
               <h3 className="sm:py-1 text-3xl text-slate-300">Welcome to <strong>Encode x Polygon Hackaton</strong> on HackList!</h3>
-              <p>You can use this platform to save your spot at the hackathon. Connect your wallet and don't miss the chance!</p>
+              <p>You can use this platform to save your spot at the hackathon. Connect your wallet and don&quot;t miss the chance!</p>
               <p className="pt-2">For more details about the hackathon, please visit: <a className="underline decoration-green-400 decoration-2 underline-offset-4" 
               target="_blank" rel="noopener noreferrer" href="https://www.encode.club/polygon-hackathon">the official website</a>.</p>
             </div>
@@ -229,7 +232,7 @@ export default function Home() {
           {
             walletConnected && (numberOfWhitelisted == maxWhitelisted) &&
             <div className="py-6 text-3xl">
-              You're late for this hack. Unfortunatelly the applications are closed 🙁.
+              You&quot;re late for this hack. Unfortunatelly the applications are closed 🙁.
             </div>
           }
           { !walletConnected && 
@@ -249,10 +252,10 @@ export default function Home() {
           !joinedWhitelist && walletConnected && (numberOfWhitelisted < maxWhitelisted) &&
             <div className="description text-xl">
             { numberOfWhitelisted == 0 &&
-              <p className="py-4">You're <span className="italic">The One</span>! No one has joined this HackList yet 😎 </p>
+              <p className="py-4">You&quot;re <span className="italic">The One</span>! No one has joined this HackList yet 😎 </p>
             }
             { numberOfWhitelisted > 0 && numberOfWhitelisted < 4 &&
-              <p className="py-4">You're an OG! Only <strong>{numberOfWhitelisted}</strong> {numberOfWhitelisted > 1 ? 'hackers have' : 'hacker has'} joined this HackList.</p>
+              <p className="py-4">You&quot;re an OG! Only <strong>{numberOfWhitelisted}</strong> {numberOfWhitelisted > 1 ? 'hackers have' : 'hacker has'} joined this HackList.</p>
             }
             { numberOfWhitelisted > 3 &&
               <p className="py-4"><strong>{numberOfWhitelisted}</strong> hackers have joined the HackList.</p>
