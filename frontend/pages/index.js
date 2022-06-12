@@ -109,11 +109,6 @@ export default function Home() {
     }
   };
 
-  const showConfetti = (e) => {
-    console.log(e.page);
-    setJoinedWhitelist(true);
-    setShowingConfetti(true);
-  }
   const toggleTheme = () => {
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (localStorage.theme && localStorage.theme=="light") {
@@ -183,7 +178,6 @@ export default function Home() {
               <p>You can use this platform to save your spot at the hackathon. Connect your wallet and don&quot;t miss the chance!</p>
               <p className="pt-2">For more details about the hackathon, please visit <a className="underline decoration-green-400 decoration-2 underline-offset-4" 
               target="_blank" rel="noopener noreferrer" href="https://www.encode.club/polygon-hackathon">the official website</a>.</p>
-              <button onClick={(e) => showConfetti(e)}>show</button>
             </div>
           </div>
           { !walletConnected && 
