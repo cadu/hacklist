@@ -6,7 +6,7 @@ import { useRef, useEffect, useState } from "react";
 import { Contract } from "ethers";
 import { HACKLIST_CONTRACT_ADDRESS, abi } from "../constants";
 import Button from "../components/Button";
-import Confetti from "react-confetti";
+import Confetti from 'react-confetti';
 import { useConnectionContext } from "../components/ConnectionContext";
 import { useSpinnerContext } from "../context/SpinnerContext";
 import Nav from "../components/Nav";
@@ -162,7 +162,9 @@ export default function Home() {
         <title>HackList - Your Hackathon Whitelist</title>
         <meta name="description" content="HackList - Your Hackathon whitelist" />
       </Head>
-        <div className="flex items-center flex-1 p-10">
+      { joinedWhitelist && showingConfetti && <Confetti recycle={showingConfetti} />
+      }
+      <div className="flex items-center flex-1 p-10">
           <section className="lg:w-10/12 flex-auto">
           <Nav toggleTheme={toggleTheme}/>
           <div className="flex-row sm:flex pt-8 shadow-slate-500 justify-center">
@@ -198,7 +200,6 @@ export default function Home() {
               Thanks for joining this HackList! 🎉 
             </div>
           }
-          { joinedWhitelist && showingConfetti && <Confetti recycle={showingConfetti} />}
           { joinedWhitelist
             && (numberOfWhitelisted < maxWhitelisted) &&
             <p className="text-xl">We still have <strong>{maxWhitelisted - numberOfWhitelisted}</strong> {maxWhitelisted - numberOfWhitelisted == 1 ? 'spot': 'spots'} available.</p>
