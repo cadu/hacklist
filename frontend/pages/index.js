@@ -1,27 +1,24 @@
 import Head from "next/head";
 import Image from 'next/image';
 import HackathonLogo from "../public/hackathon-logo.svg";
-import CoverHome from "../public/cover-home.png";
 import { useRef, useEffect, useState } from "react";
 import { Contract } from "ethers";
 import { HACKLIST_CONTRACT_ADDRESS, abi } from "../constants";
+import Nav from "../components/Nav";
 import Button from "../components/Button";
 import Confetti from 'react-confetti';
 import { useConnectionContext } from "../components/ConnectionContext";
 import { useSpinnerContext } from "../context/SpinnerContext";
-import Nav from "../components/Nav";
 
 export default function Home() {
   const { web3Provider, connectWallet, walletConnected, chainId, changeNetwork } = useConnectionContext();
 
-  // joinedWhitelist keeps track of whether the current metamask address has joined the Whitelist or not
   const [joinedWhitelist, setJoinedWhitelist] = useState(false);
-  // loading is set to true when we are waiting for a transaction to get mined
-
+  
   const [showingConfetti, setShowingConfetti] = useState(false);
-  // numberOfWhitelisted tracks the number of addresses's whitelisted
+  
   const [numberOfWhitelisted, setNumberOfWhitelisted] = useState(0);
-  // maxWhitelisted tracks the number of addresses's whitelisted
+  
   const [maxWhitelisted, setMaxWhitelisted] = useState(0);
 
   const [networkConnected, setNetworkConnected]  = useState(null);
@@ -32,12 +29,12 @@ export default function Home() {
   const hackListContractSigner = useRef();
 
   /**
-   * addAddressToWhitelist: Adds the current connected address to the whitelist
+   * addAddressToWhitelist: Adds the connected account/address to the whitelist
    */
   const addAddressToWhitelist = async () => {
     try {
       setIsSpinnerOn(true);
-      // call the addAddressToWhitelist from the contract
+      // call the function addToHackList from the contract
       const tx = await hackListContractSigner.current.addToHackList();
       
       // wait for the transaction to get mined
@@ -58,7 +55,7 @@ export default function Home() {
   };
 
   /**
-   * getMaxWhitelisted:  gets the max number of whitelisted addresses
+   * getMaxWhitelisted:  gets the max number of whitelisted addresses from the contract
    */
   const getMaxWhitelisted = async () => {
     try {
@@ -72,8 +69,9 @@ export default function Home() {
       setIsSpinnerOn(false);
     }
   };
+
   /**
-   * getNumberOfWhitelisted:  gets the number of whitelisted addresses
+   * getNumberOfWhitelisted:  gets the number of whitelisted addresses from the contract
    */
   const getNumberOfWhitelisted = async () => {
     try {
@@ -89,18 +87,16 @@ export default function Home() {
   };
 
   /**
-   * checkIfAddressInWhitelist: Checks if the address is in whitelist
+   * checkIfAddressInWhitelist: Checks if the address is in the whitelist
    */
   const checkIfAddressInWhitelist = async () => {
     try {
       const signer = web3Provider.getSigner();
-      // Get the address associated to the signer which is connected to  MetaMask
+      // Get the address associated to the signer which is connected to MetaMask
       const address = await signer.getAddress();
       setIsSpinnerOn(true);
-      // call the hackListAddresses from the contract
-      const _joinedWhitelist = await hackListContractSigner.current.hackListAddresses(
-        address
-      );
+      // Send user's address to the hackListAddresses mapping to check if it is in the list
+      const _joinedWhitelist = await hackListContractSigner.current.hackListAddresses(address);
       setJoinedWhitelist(_joinedWhitelist);
     } catch (err) {
       console.error(err);
@@ -129,6 +125,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!web3Provider) return;
+    // Check if network is Rinkeby (4)
     if (chainId == 4) {
       setNetworkConnected(true);
       hackListContractProvider.current = new Contract(
@@ -159,13 +156,11 @@ export default function Home() {
     <>
       <Head>
         <title>HackList - Your Hackathon Whitelist</title>
-        <meta name="description" content="HackList - Your Hackathon whitelist" />
+        <meta name="description" content="HackList - Your Hackathon Whitelist" />
       </Head>
-      { joinedWhitelist && showingConfetti && <Confetti recycle={showingConfetti} width={window.innerWidth - 20} height={document.body.scrollHeight
-}
-/>
-      }
       <div className="flex items-center flex-1 p-10">
+        { joinedWhitelist && showingConfetti && <Confetti recycle={showingConfetti} width={window.innerWidth - 20} height={document.body.scrollHeight}/>
+        }
           <section className="lg:w-10/12 flex-auto">
           <Nav toggleTheme={toggleTheme}/>
           <div className="flex-row sm:flex pt-8 shadow-slate-500 justify-center">
@@ -194,7 +189,6 @@ export default function Home() {
               You&quot;re late for this hack. Unfortunatelly the applications are closed 🙁.
             </div>
           }
-          
           { joinedWhitelist &&
             <div className="py-6 text-2xl">
               Thanks for joining this HackList! 🎉 
@@ -204,7 +198,6 @@ export default function Home() {
             && (numberOfWhitelisted < maxWhitelisted) &&
             <p className="text-xl">We still have <strong>{maxWhitelisted - numberOfWhitelisted}</strong> {maxWhitelisted - numberOfWhitelisted == 1 ? 'spot': 'spots'} available.</p>
           }
-          
           {
           !joinedWhitelist && walletConnected && (numberOfWhitelisted < maxWhitelisted) &&
             <div className="description text-xl">
