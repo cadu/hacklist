@@ -162,11 +162,11 @@ export default function Home() {
         <title>HackList - Your Hackathon Whitelist</title>
         <meta name="description" content="HackList - Your Hackathon whitelist" />
       </Head>
-        <div className="flex items-center bg-white dark:bg-gray-900 dark:text-slate-300 flex-1 p-10">
+        <div className="flex items-center flex-1 p-10">
           <section className="lg:w-10/12 flex-auto">
           <Nav toggleTheme={toggleTheme}/>
           <div className="flex-row sm:flex pt-8 shadow-slate-500 justify-center">
-            <div className="w-60 p-4 border-2 rounded">
+            <div className="w-full sm:w-60 p-4 border-2 rounded bg-slate-700 dark:bg-transparent">
               <Image src={HackathonLogo} alt="Encode x Polygon logo"/>
             </div>
             <div className="py-4 sm:py-0 sm:px-4 flex-auto w-full">
@@ -222,7 +222,7 @@ export default function Home() {
           }
           </section>
         </div>
-      <footer className="mx-10 py-2 text-right self-end align-top border-t-2 border-slate-700 text-gray-400 dark:text-gray-400 ">
+      <footer className="mx-10 py-2 text-right self-end align-top border-t border-slate-200 dark:border-slate-700 text-gray-400 dark:text-gray-400 ">
         Made with &#10084; by <span><a href="https://hackshare.xyz">HackShare</a></span>
       </footer>
     </>
