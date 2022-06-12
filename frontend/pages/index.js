@@ -110,7 +110,6 @@ export default function Home() {
   };
 
   const toggleTheme = () => {
-    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (localStorage.theme && localStorage.theme=="light") {
       document.documentElement.classList.add('dark');
       localStorage.theme = "dark";

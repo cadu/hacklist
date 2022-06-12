@@ -63,4 +63,4 @@ export const abi = [
       "type": "function"
     }
   ];
-export const HACKLIST_CONTRACT_ADDRESS = "0x495596Cc55BA3eF0adbBfD2012D5e54c9A0567D6";
+export const HACKLIST_CONTRACT_ADDRESS = "0x5516aE2fAe5d94caC99a97044AD877370A63A382";
