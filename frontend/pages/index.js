@@ -170,7 +170,7 @@ export default function Home() {
               <Image src={HackathonLogo} alt="Encode x Polygon logo"/>
             </div>
             <div className="py-4 sm:py-0 sm:px-4 flex-auto w-full">
-              <h3 className="sm:py-1 text-3xl text-slate-500 dark:text-slate-300">Welcome to <strong>Encode x Polygon Hackathon</strong> on HackList!</h3>
+              <h3 className="py-3 sm:pb-4 sm:pt-0 text-3xl text-slate-500 dark:text-slate-300">Welcome to <strong>Encode x Polygon Hackathon</strong> on HackList!</h3>
               <p>You can use this platform to save your spot at the hackathon. Connect your wallet and don&quot;t miss the chance!</p>
               <p className="pt-2">For more details about the hackathon, please visit <a className="underline decoration-green-400 decoration-2 underline-offset-4" 
               target="_blank" rel="noopener noreferrer" href="https://www.encode.club/polygon-hackathon">the official website</a>.</p>
