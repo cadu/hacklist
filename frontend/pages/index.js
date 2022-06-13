@@ -125,8 +125,8 @@ export default function Home() {
 
   useEffect(() => {
     if (!web3Provider) return;
-    // Check if network is Rinkeby (4)
-    if (chainId == 4) {
+    // Check if network is Mumbai (80001)
+    if (chainId == 80001) {
       setNetworkConnected(true);
       hackListContractProvider.current = new Contract(
         HACKLIST_CONTRACT_ADDRESS,
@@ -180,7 +180,7 @@ export default function Home() {
           {
             walletConnected && !networkConnected &&
             <div className="py-6 text-3xl">
-              Please connect to the Rinkeby Network on your wallet.
+              Please connect to the Mumbai Network on your wallet.
             </div>
           }
           {

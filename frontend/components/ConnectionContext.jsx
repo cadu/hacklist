@@ -69,8 +69,18 @@ const ConnectionContextProvider = (props) => {
     if (window.ethereum) {
       try {
         await window.ethereum.request({
-          method: "wallet_switchEthereumChain",
-          params: [{ chainId: "0x4" }]
+          method: "wallet_addEthereumChain",
+          params: [{
+                    chainId: "0x13881",
+                    rpcUrls: ["https://matic-mumbai.chainstacklabs.com"],
+                    chainName: "Mumbai",
+                    nativeCurrency: {
+                      name: "tMATIC",
+                      symbol: "tMATIC", // 2-6 characters long
+                      decimals: 18,
+                    },
+                    blockExplorerUrls: ["https://mumbai.polygonscan.com/"],
+                  }]
         });
       } catch (error) {
         console.error(error);

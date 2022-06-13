@@ -6,12 +6,19 @@ const ALCHEMY_HTTP_KEY = process.env.ALCHEMY_HTTP_KEY;
 // Rinkeby network private key
 const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY;
 
+// Mumbai network private key
+const MUMBAI_PRIVATE_KEY = process.env.MUMBAI_PRIVATE_KEY;
+
 module.exports = {
   solidity: "0.8.4",
   networks: {
     rinkeby: {
       url: ALCHEMY_HTTP_KEY,
       accounts: [RINKEBY_PRIVATE_KEY]
-    }
+    },
+    mumbai: {
+      url: ALCHEMY_HTTP_KEY,
+      accounts: [MUMBAI_PRIVATE_KEY],
+    },
   }
 }
