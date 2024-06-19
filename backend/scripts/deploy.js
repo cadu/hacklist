@@ -4,7 +4,8 @@ async function main() {
   // Get contract factory
   const hackListContract = await ethers.getContractFactory("HackList");
   // Create a transaction to deploy the contract passing as parameter the limit number of hackers in the Hackathon
-  const deployedContract = await hackListContract.deploy(10);
+  console.log("Deploying HackList contract...");
+  const deployedContract = await hackListContract.deploy(2);
   // Wait for the contract to be mined
   await deployedContract.deployed();
 

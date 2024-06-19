@@ -16,7 +16,7 @@ const ConnectionContextProvider = (props) => {
   const getProvider = async () => {
     try {
       web3ModalRef.current = new Web3Modal({
-        network: "rinkeby",
+        network: "sepolia",
         providerOptions: {},
         disableInjectedProvider: false,
       });
@@ -29,7 +29,7 @@ const ConnectionContextProvider = (props) => {
       setWalletConnected(true);
       const web3Provider = new providers.Web3Provider(provider);
       // console.log(web3Provider);
-      // If user is not connected to the Rinkeby network, let them know and throw an error
+      // If user is not connected to the right network, let them know and throw an error
       const { chainId } = await web3Provider.getNetwork();
       setChainId(chainId);
       setIsSpinnerOn(false);
@@ -71,15 +71,15 @@ const ConnectionContextProvider = (props) => {
         await window.ethereum.request({
           method: "wallet_addEthereumChain",
           params: [{
-                    chainId: "0x13881",
-                    rpcUrls: ["https://matic-mumbai.chainstacklabs.com"],
-                    chainName: "Mumbai",
+                    chainId: "0xAA36A7",
+                    rpcUrls: ["https://rpc.sepolia.org"],
+                    chainName: "Sepolia",
                     nativeCurrency: {
-                      name: "tMATIC",
-                      symbol: "tMATIC", // 2-6 characters long
+                      name: "ETH",
+                      symbol: "ETH", // 2-6 characters long
                       decimals: 18,
                     },
-                    blockExplorerUrls: ["https://mumbai.polygonscan.com/"],
+                    blockExplorerUrls: ["https://sepolia.etherscan.io/"],
                   }]
         });
       } catch (error) {
