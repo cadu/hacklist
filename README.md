@@ -12,8 +12,6 @@ $ cp .env.example .env.local
 
 $ pnpm i
 
-$ pnpm exec hardhat compile
-
 $ pnpm exec hardhat run scripts/deploy.js
 
 `Copy contract address and paste it on .env.local inside frontend directory`
