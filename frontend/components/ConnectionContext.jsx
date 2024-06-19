@@ -72,14 +72,14 @@ const ConnectionContextProvider = (props) => {
           method: "wallet_addEthereumChain",
           params: [{
                     chainId: "0xAA36A7",
-                    rpcUrls: ["https://rpc.sepolia.org"],
+                    rpcUrls: ["https://sepolia.infura.io/v3/"],
                     chainName: "Sepolia",
                     nativeCurrency: {
                       name: "ETH",
                       symbol: "ETH", // 2-6 characters long
                       decimals: 18,
                     },
-                    blockExplorerUrls: ["https://sepolia.etherscan.io/"],
+                    blockExplorerUrls: ["https://sepolia.etherscan.io"],
                   }]
         });
       } catch (error) {
