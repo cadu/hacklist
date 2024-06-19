@@ -192,7 +192,7 @@ export default function Home() {
             <div className="py-4 sm:py-0 sm:px-4 flex-auto w-full">
               <h3 className="py-3 sm:pb-4 sm:pt-0 text-3xl text-slate-500 dark:text-slate-300">
                 Welcome to <strong>Encode x Polygon Hackathon</strong> on
-                HackList! {contractAddress}
+                HackList!
               </h3>
               <p>
                 You can use this platform to save your spot at the hackathon.
@@ -260,8 +260,8 @@ export default function Home() {
                   <p className="py-4">
                     You&quot;re an OG! Only{" "}
                     <strong>{numberOfWhitelisted}</strong>{" "}
-                    {numberOfWhitelisted > 1 ? "hackers have" : "hacker has"}{" "}
-                    joined this HackList.
+                    {numberOfWhitelisted > 1 ? "hackers" : "hacker"} joined this
+                    HackList.
                   </p>
                 )}
                 {numberOfWhitelisted > 3 && (
