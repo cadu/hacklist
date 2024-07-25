@@ -51,8 +51,9 @@ export default function Home() {
       setJoinedWhitelist(true);
       setShowingConfetti(true);
     } catch (err) {
-      if (err.error.message) {
-        alert(err.error.message);
+      console.log();
+      if (err.code == "ACTION_REJECTED") {
+        alert("User canceled the transaction");
       } else {
         alert(err);
       }
@@ -214,7 +215,7 @@ export default function Home() {
           </div>
           {!walletConnected && (
             <Button onClick={connectWallet} loading={isSpinnerOn}>
-              Please connect your wallet
+              Please connect your wallet now!
             </Button>
           )}
           {walletConnected && !networkConnected && (
